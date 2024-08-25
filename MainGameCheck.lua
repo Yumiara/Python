@@ -64,6 +64,7 @@ if placeId == 12552538292 or placeId == 12411473842 then
 end
 task.wait()
 if getgenv().ScriptName ~= nil then
+    game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Script",Text = "Loading, Please wait. Don't re-execute yet or if it take long time already then re-execute",Duration = 5})
     game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Script",Text = "After check key, sometimes you have to re-execute to make tthe script show",Duration = 5})
     if getgenv().ScriptName == "PRESSURE" then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/NewCMain/main/Script/Pressure.lua"))();
