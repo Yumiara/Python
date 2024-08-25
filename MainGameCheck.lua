@@ -63,7 +63,8 @@ if placeId == 12552538292 or placeId == 12411473842 then
     getgenv().ScriptName = "PRESSURE";
 end
 task.wait()
-if getgenv().ScriptName ~= nil then 
+if getgenv().ScriptName ~= nil then
+    game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Script",Text = "After check key, sometimes you have to re-execute to make tthe script show",Duration = 5})
     if getgenv().ScriptName == "PRESSURE" then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/NewCMain/main/Script/Pressure.lua"))();
     elseif getgenv().ScriptName == "The Mimic" then
