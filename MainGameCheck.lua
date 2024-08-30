@@ -67,19 +67,19 @@ if getgenv().ScriptName ~= nil then
     game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Script",Text = "Loading, Please wait. Don't re-execute yet or if it take long time already then re-execute",Duration = 10})
     game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Script",Text = "After check key, sometimes you have to re-execute to make tthe script show",Duration = 10})
     if getgenv().ScriptName == "PRESSURE" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/NewCMain/main/Script/Pressure.lua"))();
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Python/main/Pressure.py"))();
     elseif getgenv().ScriptName == "The Mimic" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/NewCMain/main/Script/TheMimic.lua"))();
+        game:GetService("Players").LocalPlayer:Kick("In progess");
     elseif getgenv().ScriptName == "FTF" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/NewCMain/main/Script/FTF.lua"))();
+        game:GetService("Players").LocalPlayer:Kick("In progess");
     elseif getgenv().ScriptName == "UTS" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/NewCMain/main/Script/UTS.lua"))();
+        game:GetService("Players").LocalPlayer:Kick("In progess");
     elseif getgenv().ScriptName == "Stock Up" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/NewCMain/main/Script/StockUp.lua"))();
+        game:GetService("Players").LocalPlayer:Kick("In progess");
     elseif getgenv().ScriptName == "ADT" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/NewCMain/main/Script/ADT.lua"))();
+        game:GetService("Players").LocalPlayer:Kick("In progess");
     elseif getgenv().ScriptName == "BABFT" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/NewCMain/main/Script/BABFT.lua"))();
+        game:GetService("Players").LocalPlayer:Kick("In progess");
     elseif getgenv().ScriptName == "Dragon Adventure" then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Python/main/DragonAdventure.py"))();
     end;
