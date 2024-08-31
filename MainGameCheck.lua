@@ -62,6 +62,9 @@ end
 if placeId == 12552538292 or placeId == 12411473842 then
     getgenv().ScriptName = "PRESSURE";
 end
+if placeId == 6839171747 then
+    getgenv().ScriptName = "Door"
+end
 task.wait()
 if getgenv().ScriptName ~= nil then
     game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Script",Text = "Loading, Please wait. Don't re-execute yet or if it take long time already then re-execute",Duration = 10})
@@ -82,6 +85,8 @@ if getgenv().ScriptName ~= nil then
         game:GetService("Players").LocalPlayer:Kick("In progess");
     elseif getgenv().ScriptName == "Dragon Adventure" then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Python/main/DragonAdventure.py"))();
+    elseif getgenv().ScriptName == "Door" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Python/main/Door.py"))();
     end;
 else
     game:GetService("Players").LocalPlayer:Kick("Unsupported Experience");
