@@ -1,6 +1,4 @@
-if isfile("Neuron_doors.bin") then
-delfile("Neuron_doors.bin");
-end;
+
 placeId = game.PlaceId
 if placeId == 6296321810 or placeId == 6479231833 or placeId == 6301638949 or placeId == 6480994221 then
     getgenv().ScriptName = "The Mimic";
