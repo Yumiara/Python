@@ -95,11 +95,16 @@ local ElBlurSource = function()
 		};
 
 		task.spawn(function()
-			if GGG["acrylicf"] then
-				Part:Destroy();
-				C4.Enabled = false;
-				SurfaceGui:Destroy();
-			end;
+			repeat task.wait();
+				if GGG["acrylicf"] then
+					pcall(function()
+						Part:Destroy();
+						C4.Enabled = false;
+						SurfaceGui:Destroy();
+					end);
+					break;
+				end;
+			until false
 		end);
 
 		local Update = function()
