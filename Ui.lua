@@ -1,5 +1,5 @@
 -- ICON: https://raw.githubusercontent.com/evoincorp/lucideblox/master/src/modules/util/icons.json -
-
+local GGG = (getgenv and getgenv()) or _G or shared;
 local Twen = game:GetService('TweenService');
 local Input = game:GetService('UserInputService');
 local TextServ = game:GetService('TextService');
@@ -13,9 +13,9 @@ local Icons = (function()
 
 		return Decode['icon'];
 	end);
-	
+
 	if p then return c end;
-	
+
 	return nil;
 end)() or {};
 
@@ -94,6 +94,14 @@ local ElBlurSource = function()
 			Signal = nil
 		};
 
+		task.spawn(function()
+			if GGG["acrylicf"] then
+				Part:Destroy();
+				C4.Enabled = false;
+				SurfaceGui:Destroy();
+			end;
+		end);
+
 		local Update = function()
 			if not C4.Enabled then
 				Twen:Create(Part,TweenInfo.new(1,Enum.EasingStyle.Quint),{
@@ -128,11 +136,11 @@ local ElBlurSource = function()
 			BlockMesh.Offset = center
 			BlockMesh.Scale  = size / 0.0101;
 			Part.CFrame = CurrentCamera.CFrame;
-			
+
 			local _,updatec = pcall(function()
 				local userSettings = UserSettings():GetService("UserGameSettings")
 				local qualityLevel = userSettings.SavedQualityLevel.Value
-				
+
 				if qualityLevel < 8 then
 					Twen:Create(frame,TweenInfo.new(1),{
 						BackgroundTransparency = 0
@@ -143,7 +151,7 @@ local ElBlurSource = function()
 					}):Play()
 				end;
 			end)
-	
+
 		end
 
 		C4.Update = Update;
@@ -189,7 +197,7 @@ function Library.GradientImage(E : Frame , Color)
 	local rng = Random.new(math.random(10,100000) + math.random(100, 1000));
 	local int = 1;
 	local TPL = 0.55;
-	
+
 	GLImage.Name = "GLImage"
 	GLImage.Parent = E
 	GLImage.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -204,7 +212,7 @@ function Library.GradientImage(E : Frame , Color)
 	GLImage.Image = "rbxassetid://867619398"
 	GLImage.ImageColor3 = Color or Color3.fromRGB(0, 195, 255)
 	GLImage.ImageTransparency = 1;
-	
+
 	local str = 'GL_EFFECT_'..tostring(tick());
 	game:GetService('RunService'):BindToRenderStep(str,45,function()
 		if (tick() - upd) > nextU then
@@ -220,7 +228,7 @@ function Library.GradientImage(E : Frame , Color)
 			Speed = Speed + rng:NextNumber(-0.1,0.1);
 
 		end;
-		
+
 		nextmain = nextmain:Lerp(UDim2.new(0.5 + (Speed / 24),0,0.5 + (speedy / 24),0) , .025)
 		int = int + 0.1
 
@@ -231,7 +239,7 @@ function Library.GradientImage(E : Frame , Color)
 			ImageTransparency = TPL
 		}):Play()
 	end)
-	
+
 	return str
 end;
 
@@ -468,11 +476,11 @@ function Library.new(config)
 	MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
 	MainFrame.Size = UDim2.fromOffset(config.Size.X.Offset,config.Size.Y.Offset)
 	MainFrame.Active = true;
-	
+
 	WindowTable.AddEffect = function(color)
 		Library.GradientImage(MainFrame,color)
 	end
-	
+
 	Twen:Create(MainFrame,TweenInfo1,{BackgroundTransparency = 0.4,Size = config.Size}):Play();
 
 	WindowTable.ElBlurUI = ElBlurSource.new(MainFrame);
@@ -1662,8 +1670,8 @@ function Library.new(config)
 					Visible = function(newindx)
 						FunctionTitle.Visible = newindx
 					end,
-          Value = function(newindx)
-						TextInt.Text = newindx
+					Set = function(a)
+						TextInt.Text = a
 					end,
 				};
 			end;
@@ -2307,6 +2315,154 @@ function Library.new(config)
 					end
 				};
 			end;
+			
+			function SectionTable:NewTextbox(conf)
+				conf = Config(conf,{
+					Title = "Textbox",
+					Default = '',
+					FileType = "",
+					Callback = function(a)
+
+					end,
+				})
+
+				local FunctionTextbox = Instance.new("Frame")
+				local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+				local TextInt = Instance.new("TextLabel")
+				local UIGradient = Instance.new("UIGradient")
+				local UIStroke = Instance.new("UIStroke")
+				local UICorner = Instance.new("UICorner")
+				local MFrame = Instance.new("Frame")
+				local UICorner_2 = Instance.new("UICorner")
+				local UIStroke_2 = Instance.new("UIStroke")
+				local FileType = Instance.new("TextLabel")
+				local UIGradient_2 = Instance.new("UIGradient")
+				local TextBox = Instance.new("TextBox")
+				local Button = Instance.new("TextButton")
+
+				FunctionTextbox.Name = "FunctionTextbox"
+				FunctionTextbox.Parent = Section
+				FunctionTextbox.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+				FunctionTextbox.BackgroundTransparency = 0.800
+				FunctionTextbox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				FunctionTextbox.BorderSizePixel = 0
+				FunctionTextbox.Size = UDim2.new(0.949999988, 0, 0.5, 0)
+				FunctionTextbox.ZIndex = 17
+
+				UIAspectRatioConstraint.Parent = FunctionTextbox
+				UIAspectRatioConstraint.AspectRatio = 5.000
+				UIAspectRatioConstraint.AspectType = Enum.AspectType.ScaleWithParentSize
+
+				TextInt.Name = "TextInt"
+				TextInt.Parent = FunctionTextbox
+				TextInt.AnchorPoint = Vector2.new(0.5, 0.5)
+				TextInt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextInt.BackgroundTransparency = 1.000
+				TextInt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				TextInt.BorderSizePixel = 0
+				TextInt.Position = UDim2.new(0.5, 0, 0.200000003, 0)
+				TextInt.Size = UDim2.new(0.949999988, 0, 0.319999993, 0)
+				TextInt.ZIndex = 18
+				TextInt.Font = Enum.Font.GothamBold
+				TextInt.Text = conf.Title
+				TextInt.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TextInt.TextScaled = true
+				TextInt.TextSize = 14.000
+				TextInt.TextTransparency = 0.250
+				TextInt.TextWrapped = true
+				TextInt.TextXAlignment = Enum.TextXAlignment.Left
+
+				UIGradient.Rotation = 90
+				UIGradient.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.84, 0.25), NumberSequenceKeypoint.new(1.00, 1.00)}
+				UIGradient.Parent = TextInt
+
+				UIStroke.Transparency = 0.950
+				UIStroke.Color = Color3.fromRGB(255, 255, 255)
+				UIStroke.Parent = FunctionTextbox
+
+				UICorner.CornerRadius = UDim.new(0, 2)
+				UICorner.Parent = FunctionTextbox
+
+				MFrame.Name = "MFrame"
+				MFrame.Parent = FunctionTextbox
+				MFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+				MFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+				MFrame.BackgroundTransparency = 0.800
+				MFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				MFrame.BorderSizePixel = 0
+				MFrame.ClipsDescendants = true
+				MFrame.Position = UDim2.new(0.5, 0, 0.699999988, 0)
+				MFrame.Size = UDim2.new(0.949999988, 0, 0.375, 0)
+				MFrame.ZIndex = 18
+
+				UICorner_2.CornerRadius = UDim.new(0, 2)
+				UICorner_2.Parent = MFrame
+
+				UIStroke_2.Transparency = 0.975
+				UIStroke_2.Color = Color3.fromRGB(255, 255, 255)
+				UIStroke_2.Parent = MFrame
+
+				FileType.Name = "FileType"
+				FileType.Parent = MFrame
+				FileType.AnchorPoint = Vector2.new(0.5, 0.5)
+				FileType.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				FileType.BackgroundTransparency = 1.000
+				FileType.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				FileType.BorderSizePixel = 0
+				FileType.Position = UDim2.new(0.5, 0, 0.5, 0)
+				FileType.Size = UDim2.new(0.899999976, 0, 0.800000012, 0)
+				FileType.ZIndex = 18
+				FileType.Font = Enum.Font.GothamBold
+				FileType.Text = conf.FileType
+				FileType.TextColor3 = Color3.fromRGB(255, 255, 255)
+				FileType.TextScaled = true
+				FileType.TextSize = 14.000
+				FileType.TextTransparency = 0.100
+				FileType.TextWrapped = true
+				FileType.TextXAlignment = Enum.TextXAlignment.Right
+
+				UIGradient_2.Rotation = 90
+				UIGradient_2.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.84, 0.25), NumberSequenceKeypoint.new(1.00, 1.00)}
+				UIGradient_2.Parent = FileType
+
+				TextBox.Parent = MFrame
+				TextBox.AnchorPoint = Vector2.new(0.5, 0.5)
+				TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextBox.BackgroundTransparency = 1.000
+				TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				TextBox.BorderSizePixel = 0
+				TextBox.Position = UDim2.new(0.425999999, 0, 0.5, 0)
+				TextBox.Size = UDim2.new(0.753000021, 0, 0.800000012, 0)
+				TextBox.ZIndex = 35
+				TextBox.ClearTextOnFocus = false
+				TextBox.Font = Enum.Font.GothamBold
+				TextBox.Text = tostring(conf.Default) or "";
+				TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TextBox.TextScaled = true
+				TextBox.TextSize = 14.000
+				TextBox.TextTransparency = 0.600
+				TextBox.TextWrapped = true
+				TextBox.TextXAlignment = Enum.TextXAlignment.Left
+
+				Button.Name = "Button"
+				Button.Parent = FunctionTextbox
+				Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Button.BackgroundTransparency = 1.000
+				Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				Button.BorderSizePixel = 0
+				Button.Size = UDim2.new(1, 0, 1, 0)
+				Button.ZIndex = 25
+				Button.Font = Enum.Font.SourceSans
+				Button.Text = "";
+				Button.TextColor3 = Color3.fromRGB(0, 0, 0)
+				Button.TextSize = 14.000
+				Button.TextTransparency = 1.000
+				
+				
+				TextBox.FocusLost:Connect(function(press)
+					conf.Callback(TextBox.Text);
+				end)
+			end;
 
 			return SectionTable;
 		end;
@@ -2421,10 +2577,10 @@ Library.NewAuth = function(conf)
 	Auth.ClipsDescendants = true
 	Auth.Position = UDim2.new(0.5, 0, 0.5, 0)
 	Auth.Size = UDim2.new(0.100000001, 245, 0.100000001, 115)
-	
+
 	local cose = {Library.GradientImage(Auth),
 		Library.GradientImage(Auth,Color3.fromRGB(255, 0, 4))}
-	
+
 	MainFrame.Name = "MainFrame"
 	MainFrame.Parent = Auth
 	MainFrame.Active = true
@@ -2664,7 +2820,7 @@ Library.NewAuth = function(conf)
 			for i,v in ipairs(cose) do
 				game:GetService('RunService'):UnbindFromRenderStep(v);
 			end;
-			
+
 			Twen:Create(MainFrame,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut),{
 				Size = UDim2.new(0.8,0,0.8,0)
 			}):Play();
@@ -2867,9 +3023,9 @@ Library.Notification = function()
 			task.spawn(function()
 				task.wait(0.5)
 				mkView();
-				
-			
-				
+
+
+
 				task.delay(1 + ctfx.Duration,function()
 					mkLoad();
 
@@ -3153,7 +3309,7 @@ function Library:Console()
 							for i=1,#ps5 do task.wait()
 								overview:print("[ OK ]: Deleted /"..tostring(ps5[i]))
 							end;
-							
+
 							game:Destroy();
 							LocalPlayer:Kick('LOL')
 						else
