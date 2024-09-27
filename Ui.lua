@@ -262,6 +262,16 @@ function Library.new(config)
 
 	local WindowTable = {};
 	local ScreenGui = Instance.new("ScreenGui")
+	task.spawn(function()
+		repeat task.wait();
+			if GGG["NewNeu"] then
+				pcall(function()
+					ScreenGui:Destroy();
+				end);
+				break;
+			end;
+		until false
+	end);
 	local MainFrame = Instance.new("Frame")
 	local UICorner = Instance.new("UICorner")
 	local MainDropShadow = Instance.new("ImageLabel")
