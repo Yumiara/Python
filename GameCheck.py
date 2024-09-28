@@ -1,4 +1,7 @@
 placeId = game.PlaceId
+if placeId == 6243699076 then
+    getgenv().ScriptName = "The Mimic" --b1c1
+end
 if placeId == 6296321810 or placeId == 6479231833 or placeId == 6301638949 or placeId == 6480994221 then
     getgenv().ScriptName = "The Mimic" --b1c1
 elseif placeId == 6373539583 or placeId == 6485055338 or placeId == 6406571212 or placeId == 6485055836 or placeId == 6425178683 or placeId == 6485056556 then
