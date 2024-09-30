@@ -11,6 +11,8 @@ elseif game.GameId == 2440500124 then
 	scrName = 'https://raw.githubusercontent.com/Yumiara/Python/main/Door.py';
 elseif game.GameId == 2294168059 then
 	scrName = 'https://raw.githubusercontent.com/Yumiara/Python/refs/heads/main/TheMimic.py';
+elseif game.GameId == 1000233041 then
+	scrName = 'https://raw.githubusercontent.com/Yumiara/Python/refs/heads/main/SCP3008.py';
 end;
 
 
