@@ -2114,11 +2114,13 @@ function Library.new(config)
 
 				local function update(Input)
 					local SizeScale = math.clamp((((Input.Position.X) - MFrame.AbsolutePosition.X) / MFrame.AbsoluteSize.X), 0, 1)
-					local Value = math.floor(((slider.Max - slider.Min) * SizeScale) + slider.Min)
+					local precision = 10
+					local rawValue = ((slider.Max - slider.Min) * SizeScale) + slider.Min
+					local Value = math.round(rawValue * precision) / precision
 					local Size = UDim2.fromScale(SizeScale, 1)
 					ValueText.Text = tostring(Value)..'/'..tostring(slider.Max)
-					Twen:Create(TFrame,TweenInfo.new(0.1),{Size = Size}):Play()
-					slider.Callback(Value);
+					Twen:Create(TFrame, TweenInfo.new(0.1), {Size = Size}):Play()
+					slider.Callback(Value)
 				end
 
 				MFrame.InputBegan:Connect(function(Input)
