@@ -1,4 +1,8 @@
 placeId = game.PlaceId
+
+if game.GameId == 5569032992 then
+    getgenv().ScriptName = "Diddy" --b1c1
+end
 if placeId == 6243699076 then
     getgenv().ScriptName = "The Mimic" --b1c1
 end
