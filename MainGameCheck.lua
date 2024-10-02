@@ -13,6 +13,8 @@ elseif game.GameId == 2294168059 then
 	scrName = 'https://raw.githubusercontent.com/Yumiara/Python/refs/heads/main/TheMimic.py';
 elseif game.GameId == 1000233041 then
 	scrName = 'https://raw.githubusercontent.com/Yumiara/Python/refs/heads/main/SCP3008.py';
+elseif game.GameId == 5569032992 then
+	scrName = 'https://raw.githubusercontent.com/Yumiara/Python/refs/heads/main/DiddyWorld.py';
 end;
 
 
