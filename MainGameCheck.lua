@@ -4,7 +4,7 @@ game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Script",Text
 game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Script",Text = "After check key, sometimes you have to re-execute to make tthe script show",Duration = 10})
 
 if game.GameId == 4367208330 then
-	scrName = 'https://raw.githubusercontent.com/Yumiara/Python/main/Pressure.py';
+	scrName = 'https://raw.githubusercontent.com/Yumiara/Python/refs/heads/main/PressureW.py';
 elseif game.GameId == 1235188606 then
 	scrName = 'https://raw.githubusercontent.com/Yumiara/Python/main/DragonAdventure.py';
 elseif game.GameId == 2440500124 then
