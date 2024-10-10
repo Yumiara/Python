@@ -1711,7 +1711,7 @@ function Lib:SendConsole(value, Color)
 	end);
 end;
 
-function SendRequest(value)
+function Lib:SendRequest(value)
 	G2L["56"].Text = value;
 end;
 
