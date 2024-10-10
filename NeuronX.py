@@ -1715,52 +1715,6 @@ function SendRequest(value)
 	G2L["56"].Text = value;
 end;
 
-function tableTostring(t, indent)
-    indent = indent or 0;
-    local str = "{\n";
-    local indentStr = string.rep("    ", indent);
-
-    for key, value in pairs(t) do
-        local keyStr = "";
-        if type(key) == "string" then
-            keyStr = '["' .. key .. '"] = ';
-        elseif type(key) == "number" then
-            keyStr = "[" .. key .. "] = ";
-        end;
-
-        if type(value) == "table" then
-            str = str .. indentStr .. keyStr .. tableTostring(value, indent + 1) .. ",\n";
-        else
-            str = str .. indentStr .. keyStr .. tostring(value) .. ",\n";
-        end;
-    end;
-
-    str = str .. string.rep("    ", indent - 1) .. "}";
-    return str;
-end;
-
-abc = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventory")
-print(abc)
-SendRequest("Inventory = " .. tableTostring(abc, 1) .. ";")
-task.spawn(function()
-	task.wait(2);
-	for i=1, 100 do task.wait()
-		Lib:SendConsole("gay", Color3.fromRGB(255, 0, 0));
-	end;
-end);
-Lib:StackError("avbbb", false);
-Lib:StackError("v", false);
-Lib:StackError("a", false);
-Lib:StackError("vef", false);Lib:StackError("wad", false);
-Lib:StackError("w2", false);
-Lib:StackError("wq", false);
-Lib:StackError("11", false);
-Lib:AddCmd("diddy", "diddy", "diddy", Color3.fromRGB(255, 0, 0));
-Lib:AddCmd("diddy", "diddy", "diddy", Color3.fromRGB(255, 0, 0));
-Lib:AddCmd("diddy", "diddy", "diddy", Color3.fromRGB(255, 0, 0));
-Lib:AddCmd("diddy", "diddy", "diddy", Color3.fromRGB(255, 0, 0));
-Lib:AddCmd("diddy", "diddy", "diddy", Color3.fromRGB(255, 0, 0));
-
 local POPCD = {
 	["InCDG2L40"] = false;
 	["InCDG2L4e"] = false;
