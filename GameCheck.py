@@ -1,5 +1,8 @@
 placeId = game.PlaceId
 
+if game.GameId == 1235188606 then
+    getgenv().ScriptName = "Dragon Adventure" --DA.
+end;
 if game.GameId == 5569032992 then
     getgenv().ScriptName = "PRESSURE" --Pressure
 end 
