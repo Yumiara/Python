@@ -17,6 +17,8 @@ elseif game.GameId == 5569032992 then
 	scrName = 'https://raw.githubusercontent.com/Yumiara/Python/refs/heads/main/DiddyWorld.py';
 elseif game.GameId == 4367208330 then
 	scrName = 'https://raw.githubusercontent.com/Yumiara/Python/refs/heads/main/PressureW.py';
+elseif game.GameId == 5750914919 then
+	scrName = 'https://raw.githubusercontent.com/Yumiara/Python/refs/heads/main/Fisch-XYZ.cpp';
 end;
 
 
