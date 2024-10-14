@@ -81,6 +81,11 @@ end
 if placeId == 2768379856 then
     getgenv().ScriptName = "SCP3008"
 end
+
+if placeId == 5750914919 then
+    getgenv().ScriptName = "Fisch"
+end
+
 task.wait();
 if getgenv().ScriptName ~= nil then  return getgenv().ScriptName
 else game:GetService("Players").LocalPlayer:Kick("Unsupported Experience")
