@@ -1,5 +1,8 @@
 placeId = game.PlaceId
 
+if game.GameId == 2294168059 then
+    getgenv().ScriptName = "The Mimic" --The Mimic
+end;
 if game.GameId == 3647333358 then
     getgenv().ScriptName = "Evade" --Evade
 end;
