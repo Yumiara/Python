@@ -1659,7 +1659,7 @@ function ClosureEvn()
                 function SectionTable:NewButton(cfg)
                     cfg = Config(cfg,{
                         Title = "Button",
-                        ShowBorder = false,
+                        ShowBorder = true,
                         BorderColor = Color3.fromRGB(0, 0, 255),
                         Callback = function() end;
                     });
