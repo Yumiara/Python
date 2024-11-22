@@ -2604,7 +2604,7 @@ function ClosureEvn()
         BlockFrame.Parent = MainFrame
         BlockFrame.AnchorPoint = Vector2.new(0.5, 0.5)
         BlockFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-        BlockFrame.BackgroundTransparency = config.BlockTransparency2
+        BlockFrame.BackgroundTransparency = 0.8
         BlockFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
         BlockFrame.BorderSizePixel = 0
         BlockFrame.Position = UDim2.new(0.5, 0, 0.150000006, 0)
