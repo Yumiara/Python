@@ -1659,7 +1659,7 @@ function ClosureEvn()
                 function SectionTable:NewButton(cfg)
                     cfg = Config(cfg,{
                         Title = "Button",
-                        ShowBorder = true,
+                        ShowBorder = false,
                         BorderColor = Color3.fromRGB(0, 0, 255),
                         Callback = function() end;
                     });
@@ -2603,7 +2603,7 @@ function ClosureEvn()
         BlockFrame.Name = "BlockFrame"
         BlockFrame.Parent = MainFrame
         BlockFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-        BlockFrame.BackgroundColor3 = config.BlockFrameColor
+        BlockFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         BlockFrame.BackgroundTransparency = config.BlockTransparency2
         BlockFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
         BlockFrame.BorderSizePixel = 0
