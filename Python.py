@@ -1310,7 +1310,9 @@ function ClosureEvn()
                 c_o_n_f_i_g = Config(c_o_n_f_i_g,{
                     Position = "Left",
                     Title = "Section",
-                    Icon = 'rbxassetid://7733964640'
+                    Icon = 'rbxassetid://7733964640',
+                    IsRich = false,
+                    RichText = "Hello"
                 });
 
                 local SectionTable = {};
@@ -1410,7 +1412,12 @@ function ClosureEvn()
                 Title.Position = UDim2.new(0.125, 0, 0.449999988, 0)
                 Title.Size = UDim2.new(1, 0, 0.5, 0)
                 Title.Font = Enum.Font.GothamBold
-                Title.Text = c_o_n_f_i_g.Title
+                if not IsRich then
+                    Title.Text = c_o_n_f_i_g.Title
+                else
+                    Title.RichText = true;
+                    Title.Text = c_o_n_f_i_g.RichText;
+                end;
                 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
                 Title.TextScaled = true
                 Title.TextSize = 14.000
