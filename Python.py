@@ -1412,7 +1412,7 @@ function ClosureEvn()
                 Title.Position = UDim2.new(0.125, 0, 0.449999988, 0)
                 Title.Size = UDim2.new(1, 0, 0.5, 0)
                 Title.Font = Enum.Font.GothamBold
-                if not IsRich then
+                if not c_o_n_f_i_g.IsRich then
                     Title.Text = c_o_n_f_i_g.Title
                 else
                     Title.RichText = true;
