@@ -3,6 +3,8 @@
 --};
 
 function ClosureEvn()
+    EnvironmentDesyn = workspace;
+
     local Twen = game:GetService('TweenService');
     local Input = game:GetService('UserInputService');
     local TextServ = game:GetService('TextService');
@@ -84,8 +86,14 @@ function ClosureEvn()
                 },
                 Signal = nil
             };
-
             local Update = function()
+                if not waHDDwjidawjiodfawidhawdaw or not waHDDwjidawjiodfawidhawdaw.Parent then
+                    EnvironmentDesyn = false;
+                end;
+                if not EnvironmentDesyn then
+                    C4.Signal:Disconnect();
+                    C4.Signal = nil;
+                end;
                 if not C4.Enabled then
                     Twen:Create(Part,TweenInfo.new(1,Enum.EasingStyle.Quint),{
                         Transparency = 1;
@@ -146,6 +154,28 @@ function ClosureEvn()
             pcall(function()
                 C4.Signal2 = CurrentCamera:GetPropertyChangedSignal('CFrame'):Connect(function()
                     Part.CFrame = CurrentCamera.CFrame;
+                    if not EnvironmentDesyn then
+                        pcall(function()
+                            C4.Signal2:Disconnect();
+                            C4.Signal2 = nil;
+                        end);
+                        pcall(function()
+                            C4.Signal:Disconnect();
+                            C4.Signal = nil;
+                        end);
+                        pcall(function()
+                            Part:Destroy();
+                        end);
+                        pcall(function()
+                            DepthOfField:Destroy();
+                        end);
+                        pcall(function()
+                            SurfaceGui:Destroy();
+                        end);
+                        pcall(function()
+                            BlockMesh:Destroy();
+                        end);
+                    end;
                 end);
             end)
 
@@ -264,6 +294,7 @@ function ClosureEvn()
 
         local WindowTable = {};
         local ScreenGui = Instance.new("ScreenGui")
+        waHDDwjidawjiodfawidhawdaw = ScreenGui;
         local MainFrame = Instance.new("Frame")
         local UICorner = Instance.new("UICorner")
         local MainDropShadow = Instance.new("ImageLabel")
@@ -1605,62 +1636,65 @@ function ClosureEvn()
                     };
                 end;
 
-                function SectionTable:NewTitle(lrm)
+                function SectionTable:NewTitle(params)
                     local FunctionTitle = Instance.new("Frame")
-                    local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
                     local TextInt = Instance.new("TextLabel")
-                    local UIGradient = Instance.new("UIGradient")
+                    local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
                     local UICorner = Instance.new("UICorner")
-
-
+                
+                    -- Parent frame for the title
                     FunctionTitle.Name = "FunctionTitle"
                     FunctionTitle.Parent = Section
                     FunctionTitle.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
-                    FunctionTitle.BackgroundTransparency = 0.800
-                    FunctionTitle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                    FunctionTitle.BackgroundTransparency = 0.8
                     FunctionTitle.BorderSizePixel = 0
-                    FunctionTitle.Size = UDim2.new(0.949999988, 0, 0.5, 0)
+                    FunctionTitle.AutomaticSize = Enum.AutomaticSize.Y -- Adjust height automatically
+                    FunctionTitle.Size = UDim2.new(0.95, 0, 0, 0) -- Width is fixed, height is dynamic
                     FunctionTitle.ZIndex = 17
-
-                    UIAspectRatioConstraint.Parent = FunctionTitle
-                    UIAspectRatioConstraint.AspectRatio = 8.000
-                    UIAspectRatioConstraint.AspectType = Enum.AspectType.ScaleWithParentSize
-
+                
+                    -- Corner rounding
+                    UICorner.CornerRadius = UDim.new(0, 2)
+                    UICorner.Parent = FunctionTitle
+                
+                    -- Label for text
                     TextInt.Name = "TextInt"
                     TextInt.Parent = FunctionTitle
                     TextInt.AnchorPoint = Vector2.new(0.5, 0.5)
-                    TextInt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                    TextInt.BackgroundTransparency = 1.000
-                    TextInt.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                    TextInt.BorderSizePixel = 0
                     TextInt.Position = UDim2.new(0.5, 0, 0.5, 0)
-                    TextInt.Size = UDim2.new(0.949999988, 0, 0.600000024, 0)
+                    TextInt.BackgroundTransparency = 1
+                    TextInt.Size = UDim2.new(0.95, 0, 1, 0)
                     TextInt.ZIndex = 18
                     TextInt.Font = Enum.Font.GothamBold
-                    TextInt.Text = lrm
-                    TextInt.TextColor3 = Color3.fromRGB(255, 255, 255)
-                    TextInt.TextScaled = true
-                    TextInt.TextSize = 14.000
-                    TextInt.TextTransparency = 1
+                    TextInt.TextScaled = false
                     TextInt.TextWrapped = true
+                    TextInt.AutomaticSize = Enum.AutomaticSize.Y -- Adjust height automatically
                     TextInt.TextXAlignment = Enum.TextXAlignment.Left
-                    Twen:Create(TextInt,TweenInfo1,{TextTransparency = 0.25}):Play();
-
-                    UIGradient.Rotation = 90
-                    UIGradient.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.84, 0.25), NumberSequenceKeypoint.new(1.00, 1.00)}
-                    UIGradient.Parent = TextInt
-
-                    UICorner.CornerRadius = UDim.new(0, 2)
-                    UICorner.Parent = FunctionTitle
-
+                
+                    -- Set text and properties
+                    TextInt.Text = params.IsRich and params.RichText or params.Text
+                    TextInt.RichText = params.IsRich or false
+                    TextInt.TextColor3 = Color3.fromRGB(255, 255, 255)
+                    TextInt.TextSize = params.TextSize or 14
+                
+                    -- Aspect Ratio Constraint
+                    UIAspectRatioConstraint.Parent = FunctionTitle
+                    UIAspectRatioConstraint.AspectRatio = 8.0 -- Adjust to fit your design better
+                    UIAspectRatioConstraint.AspectType = Enum.AspectType.FitWithinMaxSize
+                
+                    -- Tween effect for text appearance
+                    TextInt.TextTransparency = 1
+                    Twen:Create(TextInt, TweenInfo1, { TextTransparency = 0.25 }):Play()
+                
+                    -- Return object with methods
                     return {
                         Visible = function(newindx)
                             FunctionTitle.Visible = newindx
                         end,
-                        Set = function(a)
-                            TextInt.Text = a
+                        Set = function(a, isRich)
+                            TextInt.Text = isRich and a.RichText or a.Text
+                            TextInt.RichText = isRich or false
                         end,
-                    };
+                    }
                 end;
 
                 function SectionTable:NewButton(cfg)
