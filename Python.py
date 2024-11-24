@@ -1639,51 +1639,48 @@ function ClosureEvn()
                 function SectionTable:NewTitle(params)
                     local FunctionTitle = Instance.new("Frame")
                     local TextInt = Instance.new("TextLabel")
-                    local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
                     local UICorner = Instance.new("UICorner")
+                    local UIStroke = Instance.new("UIStroke")
                 
-                    -- Parent frame for the title
+                    -- Frame for the title
                     FunctionTitle.Name = "FunctionTitle"
                     FunctionTitle.Parent = Section
-                    FunctionTitle.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
-                    FunctionTitle.BackgroundTransparency = 0.8
+                    FunctionTitle.BackgroundColor3 = Color3.fromRGB(17, 17, 17) -- Dark background color
+                    FunctionTitle.BackgroundTransparency = 0.8 -- Slight transparency
                     FunctionTitle.BorderSizePixel = 0
-                    FunctionTitle.AutomaticSize = Enum.AutomaticSize.Y -- Adjust height automatically
-                    FunctionTitle.Size = UDim2.new(0.95, 0, 0, 0) -- Width is fixed, height is dynamic
+                    FunctionTitle.AutomaticSize = Enum.AutomaticSize.Y -- Automatically adjust height
+                    FunctionTitle.Size = UDim2.new(0.95, 0, 0, 0) -- Fixed width, dynamic height
                     FunctionTitle.ZIndex = 17
                 
-                    -- Corner rounding
-                    UICorner.CornerRadius = UDim.new(0, 2)
+                    -- Rounded corners
+                    UICorner.CornerRadius = UDim.new(0, 5)
                     UICorner.Parent = FunctionTitle
+                
+                    -- Subtle border (stroke)
+                    UIStroke.Thickness = 1 -- Thin stroke for the border
+                    UIStroke.Color = Color3.fromRGB(255, 255, 255) -- Border color (white)
+                    UIStroke.Transparency = 0.8 -- Slightly visible
+                    UIStroke.Parent = FunctionTitle
                 
                     -- Label for text
                     TextInt.Name = "TextInt"
                     TextInt.Parent = FunctionTitle
-                    TextInt.AnchorPoint = Vector2.new(0.5, 0.5)
-                    TextInt.Position = UDim2.new(0.5, 0, 0.5, 0)
                     TextInt.BackgroundTransparency = 1
-                    TextInt.Size = UDim2.new(0.95, 0, 1, 0)
+                    TextInt.Size = UDim2.new(1, -10, 0, 0) -- Slight padding, dynamic height
+                    TextInt.AutomaticSize = Enum.AutomaticSize.Y -- Automatically adjusts height
+                    TextInt.Position = UDim2.new(0, 5, 0, 5) -- Padding inside the frame
                     TextInt.ZIndex = 18
                     TextInt.Font = Enum.Font.GothamBold
-                    TextInt.TextScaled = false
-                    TextInt.TextWrapped = true
-                    TextInt.AutomaticSize = Enum.AutomaticSize.Y -- Adjust height automatically
+                    TextInt.TextWrapped = true -- Ensure text wraps
+                    TextInt.TextScaled = false -- Allow custom font size
                     TextInt.TextXAlignment = Enum.TextXAlignment.Left
+                    TextInt.TextYAlignment = Enum.TextYAlignment.Top -- Align text at the top
                 
                     -- Set text and properties
                     TextInt.Text = params.IsRich and params.RichText or params.Text
                     TextInt.RichText = params.IsRich or false
                     TextInt.TextColor3 = Color3.fromRGB(255, 255, 255)
                     TextInt.TextSize = params.TextSize or 14
-                
-                    -- Aspect Ratio Constraint
-                    UIAspectRatioConstraint.Parent = FunctionTitle
-                    UIAspectRatioConstraint.AspectRatio = 8.0 -- Adjust to fit your design better
-                    UIAspectRatioConstraint.AspectType = Enum.AspectType.FitWithinMaxSize
-                
-                    -- Tween effect for text appearance
-                    TextInt.TextTransparency = 1
-                    Twen:Create(TextInt, TweenInfo1, { TextTransparency = 0.25 }):Play()
                 
                     -- Return object with methods
                     return {
@@ -1695,7 +1692,7 @@ function ClosureEvn()
                             TextInt.RichText = isRich or false
                         end,
                     }
-                end;
+                end
 
                 function SectionTable:NewButton(cfg)
                     cfg = Config(cfg,{
@@ -3579,10 +3576,23 @@ MainSec2 = Main:NewSection({
     Position = "Right"
 });
 
+local title = MainSec2:NewTitle({
+    Text = "This is a plain text example that wraps if too long.",
+    TextSize = 18,
+    IsRich = false,
+})
+
+local richTitle = MainSec2:NewTitle({
+    RichText = '<font color="#FF0000">This is a <b>rich text</b> example!</font>',
+    TextSize = 20,
+    IsRich = true,
+})
+
 Main2 = Windows:NewTab({
     Title = "Not Main",
     Description = "",
     Icon = "rbxassetid://10723345518"
 });
+
 
 --]]
