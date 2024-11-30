@@ -1529,7 +1529,12 @@ function ClosureEvn()
                     TextInt.Size = UDim2.new(0.949999988, 0, 0.479999989, 0)
                     TextInt.ZIndex = 18
                     TextInt.Font = Enum.Font.GothamBold
-                    TextInt.Text = toggle.Title
+                    if not toggle.IsRich then
+                        TextInt.Text = toggle.Title
+                    else
+                        TextInt.RichText = true;
+                        TextInt.Text = toggle.RichText;
+                    end;
                     TextInt.TextColor3 = Color3.fromRGB(255, 255, 255)
                     TextInt.TextScaled = true
                     TextInt.TextSize = 14.000
