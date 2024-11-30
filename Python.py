@@ -1486,6 +1486,8 @@ function ClosureEvn()
                     toggle = Config(toggle,{
                         Title = "Toggle",
                         Default = false,
+                        IsRich = false,
+                        RichText = '<font color="rgb(255, 0, 0)">Rich</font>',
                         Callback = function() end;
                     });
 
