@@ -4,6 +4,7 @@
 
 function ClosureEvn()
     EnvironmentDesyn = workspace;
+    waHDDwjidawjiodfawidhawdaw = workspace
 
     local Twen = game:GetService('TweenService');
     local Input = game:GetService('UserInputService');
@@ -91,8 +92,10 @@ function ClosureEvn()
                     EnvironmentDesyn = false;
                 end;
                 if not EnvironmentDesyn then
-                    C4.Signal:Disconnect();
-                    C4.Signal = nil;
+                    if C4 and C4.Signal then
+                        C4.Signal:Disconnect();
+                        C4.Signal = nil;
+                    end;
                 end;
                 if not C4.Enabled then
                     Twen:Create(Part,TweenInfo.new(1,Enum.EasingStyle.Quint),{
