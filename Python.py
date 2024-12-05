@@ -1684,7 +1684,7 @@ function ClosureEvn()
                     TextInt.TextWrapped = true -- Ensure text wraps
                     TextInt.TextScaled = false -- Allow custom font size
                     TextInt.TextXAlignment = Enum.TextXAlignment.Left
-                    TextInt.TextYAlignment = Enum.TextYAlignment.Top -- Align text at the top
+                    TextInt.TextYAlignment = Enum.TextYAlignment.Center -- Align text at the top
                 
                     -- Set text and properties
                     TextInt.Text = params.IsRich and params.RichText or params.Text
